@@ -1,6 +1,7 @@
 name: Attach Debug APKs To Release
 
 on:
+  workflow_dispatch:
   release:
     types:
       - published
@@ -8,8 +9,7 @@ on:
 jobs:
   attach-apks:
     runs-on: ubuntu-latest
-    if: ${{ !startsWith(github.event.head_commit.message, '[skip ci]') && github.repository_owner == 'JulioCj7' }}
-
+    
     strategy:
       fail-fast: false
       matrix:
